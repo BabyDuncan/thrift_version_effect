@@ -18,8 +18,12 @@ public class BookClient {
         transport.open();
         TProtocol protocol = new TBinaryProtocol(transport);
         BookService.Client client = new BookService.Client(protocol);
-        System.out.println(client.getBook(123));
-
+        long l = System.currentTimeMillis();
+        for (int i = 0; i < 10000; i++) {
+            System.out.println(client.getBook(123));
+        }
+        long l1 = System.currentTimeMillis();
+        System.out.println(l1 - l);
     }
 
 }
